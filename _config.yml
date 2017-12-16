@@ -1,18 +1,19 @@
 # Site settings
-title: "Paper Jekyll Theme"
+title: "vsccw algorithm space"
 description: > 
-  Write a description of your website here.
+  hello, I'm vsccw, here is my algorithm space. <br >
+  I will share some algorithms with you at this site.
 
-author: Johnny Appleseed
-email: johnny@appleseed.com
-twitter_username:
-github_username:
+author: vsccw
+email: qiuncheng@gmail.com
+twitter_username: vsccw
+github_username: qiuncheng
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://vsccw.github.io/algorithm" # the base hostname & protocol for your site
+url: "https://algorithm.vsccw.com" # the base hostname & protocol for your site
 
-google_analytics_id: UA-1111111111-1
-disqus_id:
+google_analytics_id: UA-92177773-2
+disqus_id: https-vsccw-com
 
 # Build settings
 include: [_pages]
