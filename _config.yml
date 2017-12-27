@@ -13,7 +13,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://algorithm.vsccw.com" # the base hostname & protocol for your site
 
 google_analytics_id: UA-92177773-2
-disqus_id: https-vsccw-com
+disqus_id: https-algorithm-vsccw
 
 # Build settings
 include: [_pages]
