@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>快速排序 - vsccw algorithm space</title>
+    <meta name="description" content="快速排序快速排序比冒泡排序效率要高很多。它采用的是一种分治的策略，将原来的数据分解成若干个规模小但结构一样的子数据，递归的来处理这些小数据。下面简单使用 Python 来实现一下, 核心就在于递归和递归结束的条件。选出一个基准数，挑选出大于该基准数的放在右边，小于该基准数的放在左边。然后不断递归，直致无法满足递归...">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,900,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/2017/12/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">
+    <link rel="alternate" type="application/rss+xml" title="vsccw algorithm space" href="http://localhost:4000/feed.xml">
+</head>
+
+    <body>
+        <main class="u-container">
+        <div class="c-page">
+    <header class="c-page__header">
+    <h1><code>vsccw algorithm space</code></h1>
+
+    
+    <p>
+        <a href="/">Home</a><span
+          class="u-separate"></span> <a href="/projects/">Projects</a><span class="u-separate"></span> <a href="/about/">About</a><span class="u-separate"></span><a href="/feed.xml">RSS</a>
+    </p>
+</header>
+
+    <div class="c-page__main">
+    <article class="c-article">
+    <header class="c-article__header">
+        <h1 class="c-article__title">快速排序</h1>
+        <p class="c-article__time"><time datetime="2017-12-27T07:44:00+08:00" itemprop="datePublished">Dec 26, 2017</time></p>
+    </header>
+    
+    <!-- Post Tags -->
+    <ul class="c-tags">
+    
+      <li class="c-tag">排序</li>
+    
+    </ul>
+
+    <div class="c-article__main">
+        <h1 id="快速排序">快速排序</h1>
+<p>快速排序比冒泡排序效率要高很多。它采用的是一种分治的策略，将原来的数据分解成若干个规模小但结构一样的子数据，递归的来处理这些小数据。下面简单使用 <code class="highlighter-rouge">Python</code> 来实现一下, 核心就在于递归和递归结束的条件。选出一个基准数，挑选出大于该基准数的放在右边，小于该基准数的放在左边。然后不断递归，直致无法满足递归条件为止。</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="k">class</span> <span class="nc">QuickSork</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alist</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">alist</span>
+
+        <span class="n">base</span> <span class="o">=</span> <span class="n">alist</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="n">right</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">alist</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">base</span><span class="p">:</span>
+                <span class="n">left</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">right</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">base</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+
+<span class="c"># 检验</span>
+<span class="n">quick_sort</span> <span class="o">=</span> <span class="n">QuickSork</span><span class="p">()</span>
+<span class="n">other_list</span> <span class="o">=</span> <span class="n">quick_sort</span><span class="o">.</span><span class="n">sort</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">other_list</span><span class="p">)</span> <span class="c"># [2, 7, 8, 10, 12, 39, 45]</span>
+</code></pre>
+</div>
+
+
+    </div>
+  
+    <!-- Previous / Next Buttons -->
+    <div class="pagenav">
+		
+        <div class="wrapper" id="left">
+          <small><b>Previous</b> Dec 24, 2017</small>
+          <br>
+          <a class="no-hov" href="/2017/12/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F">&laquo; 冒泡排序</a>
+        </div>
+		
+		
+		</div>
+
+		<!-- Disqus comments view -->
+		
+		<div class="post-disqus">
+				<section id="disqus_thread"></section>
+				<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+
+var disqus_config = function () {
+  this.page.url = /2017/12/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F;  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = /2017/12/快速排序; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-vsccw-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+		</div>
+		
+</article>
+
+    </div>
+    <footer class="c-page__footer">
+    <p>&copy; vsccw 2017</p>
+    <p><a href="https://twitter.com/vsccw">Twitter</a><span class="u-separate"></span><a href="https://github.com/qiuncheng">Github</a></p>
+</footer>
+
+</div>
+
+        </main>
+    
+    </body>
+</html>
